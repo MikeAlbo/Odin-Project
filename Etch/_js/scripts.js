@@ -26,10 +26,7 @@ var setColors = function(){
  
     $("#pixel").hover(function(){
         $("#pixel").css("background-color","green");
-    });
-    
-    
-    
+    });  
     
 };
 
