@@ -1,51 +1,84 @@
-var frank = function(){
-    var a = prompt("is this for realz?");
-};
 
-var count = 5;
-
-
-
-var setColors = function(){
-    $("#container").css({
-        "background-color" : "yellow",
-        "width": "1000px",
-        "margin": "25px auto"
-        
-    });
-    
-    $("#pixel").css({
-        "background-color":"red",
-        "width" : "50px",
-        "height" : "50px",
-        "display" : "inline-block",
-        "float" : "left"
-        
-    });
-    
  
-    $("#pixel").hover(function(){
-        $("#pixel").css("background-color","green");
-    });  
+var clear = function(){
+    $('#container').empty();
+}; 
+
+var pixelGenerator = function(){
+     var pixel = document.createElement("div");
+     var container = document.getElementById("container");
+     container.appendChild(pixel);
+     
+     $(pixel).css({
+        "background-color": "lightgray",
+         "height": "20px",
+         "width": "20px",
+         "display": "inline-block",
+         "margin": "0px",
+         "padding": "0px"
+     });
+     
+     $(pixel).hover(function(){
+        $(pixel).css("background-color", "black"); 
+     });
+ };
+ 
+var grid = function(nuumber){
+    for(i = 0; i < nuumber; i++){
+        pixelGenerator();
+    };
+};
+
+var small = function(){
+    clear();
+    grid(500);
+};
+
+var medium = function(){
+    clear();
+    grid(800);
+};
+
+var large = function(){
+    clear();
+    grid(1000);
+}
+
+
+
+
+$(document).ready(function(){
     
-};
-
-
-
-
-
-var grid = function(){
-    $('#container').append("<div id = pixal></div>");
+    medium();
+    
+//buttons
+   document.getElementById("clearButton").onclick= function(){
+       clear();
    };
+    
+    document.getElementById("smallButton").onclick= function(){
+        clear();
+        small();
+    };
+    
+    document.getElementById("mediumButton").onclick= function(){
+        clear();
+        medium();
+    };
+    
+    document.getElementById("largeButton").onclick= function(){
+        clear();
+        large();
+    };
+    
+   
+});
 
-var generateGrid = function(number){
-  for(i=0; i <= number; i++) {
-     grid();
-  }; 
-};
 
 
-setColors();
-generateGrid(25); 
+
+
+
+
 
 
